@@ -1,0 +1,14 @@
+.settings
+.settings/
+.settings/*
+.settings/*.*
+bin
+bin/
+bin/*
+bin/*.*
+target
+target/
+target/*
+target/*.*
+.classpath
+.project
