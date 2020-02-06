@@ -19,7 +19,7 @@ public class Nonogram {
 		x = clues;
 	}
 
-	public int[][] solve() {
+	int[][] solve() {
 
 		int[][] horrClues = Nonogram.getX()[0];
 		int[][] vertClues = Nonogram.getX()[1];
@@ -41,7 +41,7 @@ public class Nonogram {
 		return bitMatrix;
 	}
 
-	int[][] bitMatrixGen(List<List<BitSet>> colsSamples, int rowsSamplesSize) {
+	private int[][] bitMatrixGen(List<List<BitSet>> colsSamples, int rowsSamplesSize) {
 
 		int[][] bitMatrix = new int[colsSamples.size()][rowsSamplesSize];
 		int countRow = 0;
@@ -54,7 +54,7 @@ public class Nonogram {
 		return bitMatrix;
 	}
 
-	List<List<BitSet>> samplesListFactory(int[][] twoDimIntInputArr, int len) {
+	private List<List<BitSet>> samplesListFactory(int[][] twoDimIntInputArr, int len) {
 		List<List<BitSet>> result = new ArrayList<>();
 		for (int[] intArray : twoDimIntInputArr) {
 			List<BitSet> lst = new LinkedList<>();
@@ -75,7 +75,7 @@ public class Nonogram {
 	}
 
 	// I don't know why, but this generator of permutations works ;)
-	List<String> permutationsGenerator(List<String> onesList, int zerosNumber) {
+	private List<String> permutationsGenerator(List<String> onesList, int zerosNumber) {
 		if (onesList.isEmpty())
 			return asList(markReproduction(zerosNumber, "0"));
 
@@ -88,7 +88,7 @@ public class Nonogram {
 		return result;
 	}
 
-	String markReproduction(int n, String s) {
+	private String markReproduction(int n, String s) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < n; i++)
 			sb.append(s);
@@ -104,7 +104,7 @@ public class Nonogram {
 	 * is empty (then the failure is declared).
 	 */
 
-	int reduceMutual(List<List<BitSet>> possibleRows, List<List<BitSet>> possibleCols) {
+	private int reduceMutual(List<List<BitSet>> possibleRows, List<List<BitSet>> possibleCols) {
 		int removedCountColsRows = mutualReduction(possibleRows, possibleCols);
 		if (removedCountColsRows == -1)
 			return -1;
@@ -116,7 +116,7 @@ public class Nonogram {
 		return removedCountColsRows + removedCountRowsCols;
 	}
 
-	int mutualReduction(List<List<BitSet>> a, List<List<BitSet>> b) {
+	private int mutualReduction(List<List<BitSet>> a, List<List<BitSet>> b) {
 		int removedCount = 0;
 
 		for (int i = 0; i < a.size(); i++) {
